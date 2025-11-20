@@ -17,6 +17,7 @@ export default function Subastas() {
     const [historial, setHistorial] = useState([])
     const [subastaFinalizada, setSubastaFinalizada] = useState(false)
     const searchParams = useSearchParams();//para parametros de url
+
     useEffect(() => {
         const username = searchParams.get("username")
         const id = searchParams.get("alumnoId")
@@ -32,7 +33,7 @@ export default function Subastas() {
                 monto: subasta.precioActual,
                 timestamp: subasta.timestamp || new Date().toLocaleString()
             }
-            setHistorial(prev => [nuevaOferta, ...prev]. slice(0, 5))
+            setHistorial(prev => [nuevaOferta, ...prev].slice(0, 5))
         }
 
     }, [subasta])
@@ -120,6 +121,7 @@ export default function Subastas() {
             <p>Finalizo la subasta!!!!!!!</p>
         )}
         <OfertaDeSubasta
+            titulo="Realizar una oferta"
             onChangeOferta={(event) => setMonto(Number(event.target.value))}
             onClickRealizarOferta={realizarOferta}
         
